@@ -8,16 +8,24 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+TextView scoreboard;
+    int totalDue = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         Button order = (Button) findViewById(R.id.placeOrder);
+        scoreboard = (TextView) findViewById(R.id.scoreboard);
+
+
 
 
         final Intent intent = new Intent(this, OrderActivity.class);
@@ -42,15 +50,21 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         if (requestCode == 1) {
             if(resultCode == RESULT_OK){
-                String result=data.getStringExtra("result");
+                //String result=data.getStringExtra("result");
+                totalDue = data.getIntExtra("total", -1);
+                Log.v("totalDue", Integer.toString(totalDue));
             }
             if (resultCode == RESULT_CANCELED) {
                 //Write your code if there's no result
                 Log.v("yes","yes");
             }
+
+            String temp = "$";
+            String total = temp + String.valueOf(totalDue);
+            scoreboard.setText(total);
+            // scoreboard.setText(Float.toString(score));
         }
     }
 }

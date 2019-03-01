@@ -3,15 +3,19 @@ package com.example.mini_project1_jordan_murphy;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 
 /**
@@ -31,8 +35,14 @@ public class overviewOrder extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    TextView order1;
+    String word1;
+    int total;
+
+    private ArrayList<String> items;
 
     private OnFragmentInteractionListener mListener;
+
 
     public overviewOrder() {
         // Required empty public constructor
@@ -59,6 +69,7 @@ public class overviewOrder extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -72,6 +83,9 @@ public class overviewOrder extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_overview_order, container, false);
         Button submission = (Button) view.findViewById(R.id.submit);
+        Button remove = (Button) view.findViewById(R.id.removeItem);
+        order1 = (TextView)getActivity().findViewById(R.id.order1);
+        items = new ArrayList<String>();
 
         Intent intent = getActivity().getIntent();
 
@@ -82,8 +96,61 @@ public class overviewOrder extends Fragment {
                 Intent backIntent = new Intent();
                 //startActivity(backIntent);
                 //backIntent.putExtra("answer", "1");
-                getActivity().setResult(Activity.RESULT_CANCELED,backIntent);
+                MediaPlayer mp = MediaPlayer.create(getContext(),R.raw.cashregister);
+                Log.v("total", Integer.toString(total));
+                backIntent.putExtra("total", total);
+                getActivity().setResult(Activity.RESULT_OK,backIntent);
                 getActivity().finish();
+                mp.start();
+            }
+        });
+
+        remove.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v)
+            {
+                items.remove(items.size() - 1);
+                String temp = "";
+
+                    Log.v("total before subtract", Integer.toString(total));
+                    if (word1.equals("Coffee..................................................................$2")) {
+                        total = total - 2;
+                    }
+
+                    else if (word1.equals("Coke.....................................................................$3")) {
+                        total = total - 3;
+                    }
+
+                    else if (word1.equals("Tea.......................................................................$2")) {
+                        total = total - 2;
+                    }
+
+                    else if (word1.equals("Water....................................................................$1")) {
+                        total = total - 1;
+                    }
+                    else if (word1.equals("Burger.................................................................$10")) {
+                        total = total - 10;
+                    }
+
+                    else if (word1.equals("Nachos...............................................................$11")) {
+                        total = total - 11;
+                    }
+
+                    else if (word1.equals("Pasta..................................................................$14")) {
+                        total = total - 14;
+                    }
+
+                    else if (word1.equals("Steak..................................................................$20")) {
+                        total = total - 20;
+                    }
+                    Log.v("total after subtract", Integer.toString(total));
+                    for (int i = 0; i < items.size(); ++i){
+                        temp+=items.get(i) + "\n";
+                }
+
+                order1.setText(temp);
+
+
             }
         });
 
@@ -113,6 +180,57 @@ public class overviewOrder extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    void setText(String word){
+
+        word1 = word;
+        order1 = (TextView)getActivity().findViewById(R.id.order1);
+
+        items.add(word);
+
+        String temp = "";
+            //Log.v("size before add", Integer.toString(items.size()));
+            //Log.v("total before add", Integer.toString(total));
+            //Log.v("total before add", Integer.toString(i));
+            if (word.equals("Coffee..................................................................$2")) {
+                total = total + 2;
+            }
+
+            else if (word.equals("Coke.....................................................................$3")) {
+                total = total + 3;
+            }
+
+            else if (word.equals("Tea.......................................................................$2")) {
+                total = total + 2;
+            }
+
+            else if (word.equals("Water....................................................................$1")) {
+                total = total + 1;
+            }
+            else if (word.equals("Burger.................................................................$10")) {
+                total = total + 10;
+            }
+
+            else if (word.equals("Nachos...............................................................$11")) {
+                total = total + 11;
+            }
+
+            else if (word.equals("Pasta..................................................................$14")) {
+                total = total + 14;
+            }
+
+            else if (word.equals("Steak..................................................................$20")) {
+                total = total + 20;
+            }
+            //Log.v("total after add", Integer.toString(i));
+            //Log.v("size after add", Integer.toString(items.size()));
+            for (int i = 0; i < items.size(); ++i){
+                temp+=items.get(i) + "\n";
+        }
+
+        order1.setText(temp);
+
     }
 
     /**

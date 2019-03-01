@@ -10,9 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +29,10 @@ public class drinkOrder extends Fragment{
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    private static final String[] WORDS ={"Coffee","Coke","Tea", "Water"};
+    String word ="";
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -63,7 +69,7 @@ public class drinkOrder extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_drink_order, container, false);
-        RadioGroup drinks = (RadioGroup) rootView.findViewById(R.id.drinks);
+        final RadioGroup drinks = (RadioGroup) rootView.findViewById(R.id.drinks);
         final ImageView image = (ImageView) rootView.findViewById(R.id.imageView);
         drinks.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -71,24 +77,37 @@ public class drinkOrder extends Fragment{
                 //boolean checked = ((RadioButton) view).isChecked();
                 Log.v("reached","on click");
 
+               // ArrayAdapter<String> myadapter= new ArrayAdapter<String>(getContext(),android.R.layout.simple_list_item_1,WORDS);
+
+                //Use myadapter as input to list
+                //drinks.setAdapter(myadapter);
+
+
+
+
+
+
                 // Check which radio button was clicked
                 switch(checkedId) {
                     case R.id.coffee:
                         //if (checked)
                             Log.v("coffee image","is set");
                         image.setImageResource(R.drawable.coffee);
+                        word = "Coffee..................................................................$2";
 
                         break;
                     case R.id.coke:
                         //if (checked)
                             Log.v("coke image","is set");
                         image.setImageResource(R.drawable.coke);
+                        word = "Coke.....................................................................$3";
 
                         break;
                     case R.id.tea:
                         //if (checked)
 
                             image.setImageResource(R.drawable.tea);
+                            word = "Tea.......................................................................$2";
 
 
                         break;
@@ -96,12 +115,26 @@ public class drinkOrder extends Fragment{
                         //if (checked)
 
                             image.setImageResource(R.drawable.water);
+                            word = "Water....................................................................$1";
 
 
                         break;
                 }
+
+                Toast.makeText(getContext(), word, Toast.LENGTH_SHORT).show();
+
+                overviewOrder fragment = (overviewOrder) getFragmentManager().findFragmentById(R.id.frag_main3);
+                if(fragment!=null) {
+                    fragment.setText(word);
+                }
+
             }
         });
+
+        //ArrayAdapter<String> myadapter= new ArrayAdapter<String>(getContext(),android.R.layout.simple_list_item_1,WORDS);
+
+        //Use myadapter as input to list
+        //drinks.setAdapter(myadapter);
         Log.v("reached","on create view");
 
         return rootView;
@@ -178,6 +211,26 @@ public class drinkOrder extends Fragment{
         mListener = null;
     }
 
+
+    /*public void onActivityCreated(Bundle savedState) {
+        super.onActivityCreated(savedState);
+        drinks.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                word = parent.getItemAtPosition(position).toString();
+                Toast.makeText(getContext(), word, Toast.LENGTH_SHORT).show();
+
+                overviewOrder fragment = (overviewOrder) getFragmentManager().findFragmentById(R.id.frag_main3);
+                if(fragment!=null) {
+                    fragment.setText(word);
+                }
+
+            }
+        });
+
+
+    }*/
+    
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 
 /**
@@ -29,6 +30,8 @@ public class foodOrder extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    String word = "";
 
     private OnFragmentInteractionListener mListener;
 
@@ -68,7 +71,7 @@ public class foodOrder extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_food_order, container, false);
-        RadioGroup foods = (RadioGroup) rootView.findViewById(R.id.foods);
+        final RadioGroup foods = (RadioGroup) rootView.findViewById(R.id.foods);
         final ImageView image = (ImageView) rootView.findViewById(R.id.imageView);
         foods.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -82,18 +85,21 @@ public class foodOrder extends Fragment {
                         //if (checked)
 
                         image.setImageResource(R.drawable.burger);
+                        word = "Burger.................................................................$10";
 
                         break;
                     case R.id.nachos:
                         //if (checked)
 
                         image.setImageResource(R.drawable.nachos);
+                        word = "Nachos...............................................................$11";
 
                         break;
                     case R.id.pasta:
                         //if (checked)
 
                         image.setImageResource(R.drawable.pasta);
+                        word = "Pasta..................................................................$14";
 
 
                         break;
@@ -101,9 +107,17 @@ public class foodOrder extends Fragment {
                         //if (checked)
 
                         image.setImageResource(R.drawable.steak);
+                        word = "Steak..................................................................$20";
 
 
                         break;
+                }
+
+                Toast.makeText(getContext(), word, Toast.LENGTH_SHORT).show();
+
+                overviewOrder fragment = (overviewOrder) getFragmentManager().findFragmentById(R.id.frag_main3);
+                if(fragment!=null) {
+                    fragment.setText(word);
                 }
             }
         });
