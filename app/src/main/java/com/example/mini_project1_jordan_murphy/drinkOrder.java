@@ -121,7 +121,7 @@ public class drinkOrder extends Fragment{
                         break;
                 }
 
-                Toast.makeText(getContext(), word, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), word, Toast.LENGTH_SHORT).show();
 
                 overviewOrder fragment = (overviewOrder) getFragmentManager().findFragmentById(R.id.frag_main3);
                 if(fragment!=null) {

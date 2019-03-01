@@ -22,7 +22,7 @@
         android:id="@+id/submit"
         android:layout_width="100dp"
         android:layout_height="75dp"
-        android:layout_marginLeft="175dp"
+        android:layout_marginLeft="225dp"
         android:layout_marginTop="225dp"
         android:gravity="center"
         android:text="Submit Order" />
@@ -39,7 +39,7 @@
     <Button
         android:id="@+id/removeItem"
         android:layout_marginTop="225dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="70dp"
         android:layout_width="100dp"
         android:layout_height="75dp"
         android:gravity="center"

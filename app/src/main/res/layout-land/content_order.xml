@@ -12,7 +12,7 @@
     <fragment
         android:id="@+id/frag_main1"
         android:name="com.example.mini_project1_jordan_murphy.drinkOrder"
-        android:layout_width="177dp"
+        android:layout_width="133dp"
         android:layout_height="251dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -22,7 +22,7 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.014"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.27"
@@ -32,7 +32,7 @@
     <fragment
         android:id="@+id/frag_main2"
         android:name="com.example.mini_project1_jordan_murphy.foodOrder"
-        android:layout_width="177dp"
+        android:layout_width="125dp"
         android:layout_height="251dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -51,7 +51,7 @@
     <fragment
         android:id="@+id/frag_main3"
         android:name="com.example.mini_project1_jordan_murphy.overviewOrder"
-        android:layout_width="299dp"
+        android:layout_width="396dp"
         android:layout_height="309dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -85,7 +85,7 @@
         app:layout_constraintHorizontal_bias="0.014"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.032" />
+        app:layout_constraintVertical_bias="0.021" />
 
     <TextView
         android:id="@+id/textView4"
@@ -102,10 +102,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.032" />
+        app:layout_constraintVertical_bias="0.021" />
 
     <TextView
         android:id="@+id/textView2"
