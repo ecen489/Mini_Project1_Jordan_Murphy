@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="376dp"
+    android:layout_height="251dp"
+    tools:context=".overviewOrder"
+    android:background="@drawable/background"
+    android:gravity="center">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="403dp"
+        android:layout_height="134dp"
+        android:text="Current Order"
+        android:textColor="#500"
+        android:textSize="20sp"
+        android:gravity="top|center"/>
+
+        <Button
+            android:id="@+id/submit"
+            android:gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="159dp"
+            android:layout_marginLeft="159dp"
+            android:layout_marginTop="39dp"
+            android:layout_marginEnd="164dp"
+            android:layout_marginRight="164dp"
+            android:layout_marginBottom="644dp"
+            android:text="Submit Order" />
+
+</FrameLayout>
